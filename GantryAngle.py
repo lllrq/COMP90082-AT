@@ -6,14 +6,21 @@ if you want use this function,
 please upload one file_path which is a dicom file
 """
 def extractGantryAngle(file_path):
-    file_path = "/Users/seven/Desktop/YellowLvlIII_7a.dcm"
+    file_path = "C:/Users/zhouz/Documents/SP/YellowLvlIII_7a.dcm"
     ds = pydicom.dcmread(file_path,force=True)
+    list1 = []
     for bs in ds.BeamSequence:
         for cp in bs.ControlPointSequence:
             if hasattr(cp,'GantryAngle'):
-                print(cp.GantryAngle)
-
+                list1.append(cp.GantryAngle)
+                #print(cp.GantryAngle)
+    return list1;
     # print(ds.BeamSequence[0].ControlPointSequence[0].GantryAngle)
+
+def TestGantryAngle(file_path):
+    ds = pydicom.dcmread(file_path, force=True)
+    list1 = [150.0,60.0]
+
 
 file_path = "/Users/seven/Desktop/YellowLvlIII_7a.dcm"
 extractGantryAngle(file_path)
