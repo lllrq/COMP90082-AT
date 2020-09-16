@@ -1,29 +1,76 @@
 import pydicom
+import csv
+import os
 
 """
+Method1 : 
 extract all gantry angle from file_path  
 if you want use this function, 
 please upload one file_path which is a dicom file
 """
-def extractGantryAngle(file_path):
-    file_path = "C:/Users/zhouz/Documents/SP/YellowLvlIII_7a.dcm"
-    ds = pydicom.dcmread(file_path,force=True)
+
+
+def extract_gantry_angle(file_path):
+    ds = pydicom.dcmread(file_path, force=True)
     list1 = []
     for bs in ds.BeamSequence:
         for cp in bs.ControlPointSequence:
-            if hasattr(cp,'GantryAngle'):
+            if hasattr(cp, 'GantryAngle'):
                 list1.append(cp.GantryAngle)
-                #print(cp.GantryAngle)
-    return list1;
-    # print(ds.BeamSequence[0].ControlPointSequence[0].GantryAngle)
+    list1 = list(set(list1))
+    print(list1)
+    return list1
+
+
+'''
+Method2:  
+this function toCSVFile is used to 
+convert param dataList to one csv file which contain value and result(pass/fail); 
+paramType means: which param you want to   
+'''
+
+
+def to_csv_file(dataList, destination, paramType="GantryAngle"):
+    csvFile = open(destination, 'w', newline='')
+    try:
+        writer = csv.writer(csvFile)
+        writer.writerow((paramType + " #", 'value', 'result'))
+        for i in range(len(dataList)):
+            flag = dataList[i] > 50 and dataList[i] < 120
+            writer.writerow((i, dataList[i], flag))
+    finally:
+        csvFile.close()
+
 
 def TestGantryAngle(file_path):
     ds = pydicom.dcmread(file_path, force=True)
-    list1 = [150.0,60.0]
+    list1 = [150.0, 60.0]
 
 
-file_path = "/Users/seven/Desktop/YellowLvlIII_7a.dcm"
-extractGantryAngle(file_path)
+file_path = "/Users/yaozhiyuan/Desktop/YellowLvlIII_7a.dcm"
+
+'''
+Method3:  
+this function auto_validate is used to 
+auto validate file from DICOM file and output csv file 
+'''
+
+
+def auto_validate(file_path):
+    dataList = extract_gantry_angle(file_path)
+    destination = file_path[0:file_path.rfind("/")] + "/test1.csv"
+    to_csv_file(dataList, destination)
+    print("congratulation, validate success!")
+    print("the output file is located in " + destination)
+
+
+
+
+filePath = os.path.split(os.path.realpath(__file__))[0] + "/DICOM_File_Path"
+file = open(filePath)
+for line in file:
+    auto_validate(line)
+file.close()
 
 
 
