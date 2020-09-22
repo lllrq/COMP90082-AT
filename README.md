@@ -1,6 +1,13 @@
 # COMP90082-AT
 
 
+how to use it?
+so easy, two steps:
+
+1: put dicom file path to DICOM_File_Path file;
+2: run the GantryAngle file;
+3: check the csv file in directory which is same with DICOM_File_Path file;
+
 AT-wombat is a pure python package for extracting params from DICOM files. 
 It was made for extracting and validating DICOM data in an easy "pythonic" way.  
 

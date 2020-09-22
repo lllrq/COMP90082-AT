@@ -1,0 +1,23 @@
+
+This file is convenient for our development.
+when we finish the development, we will delete it and don't care about it.
+
+// category1:
+/Users/yaozhiyuan/myunimelb/semster3/software project/DICOM/LII DICOM samples/ACDSLevelII3_6a.dcm
+/Users/yaozhiyuan/myunimelb/semster3/software project/DICOM/LII DICOM samples/YellowLvlIII_7a.dcm
+
+
+// category2：
+/Users/yaozhiyuan/myunimelb/semster3/software project/First Sample/IMRT DICOM sample/YellowLvlIII_7a.dcm
+
+
+
+// some error recording ：
+// 1.
+File "/Users/yaozhiyuan/PycharmProjects/COMP90082-AT/GantryAngle.py", line 22, in extract_gantry_angle
+    for bs in ds.BeamSequence:
+  File "/Users/yaozhiyuan/PycharmProjects/pythonProject/venv/lib/python3.8/site-packages/pydicom/dataset.py", line 778, in __getattr__
+    return object.__getattribute__(self, name)
+AttributeError: 'FileDataset' object has no attribute 'BeamSequence'
+
+// 2.
