@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 ''' This script runs a set of unittests on the Python
-    code named GantryAngle.py written for the subject
+    code named auto_validate.py written for the subject
     Software Project (COMP90082)
 
     Execute by entering your Anaconda environment and
@@ -14,7 +14,7 @@
 
 import unittest
 import os
-import GantryAngle
+import auto_validate
 
 
 class TestTaskOne(unittest.TestCase):
@@ -26,14 +26,14 @@ class TestTaskOne(unittest.TestCase):
 
     def test_import(self):
         ''' Test the import_csv function '''
-        ga_output = GantryAngle.extractGantryAngle(self.filepath)
+        ga_output = auto_validate.extractGantryAngle(self.filepath)
         self.assertTrue(isinstance(ga_output, list),
                         "Output not a list. \
                         Ignore this error if you defined a class.")
 
     def test_project_output(self):
         ''' Tests the function '''
-        ga_output_list = GantryAngle.extractGantryAngle(self.filepath)
+        ga_output_list = auto_validate.extractGantryAngle(self.filepath)
         self.assertTrue(isinstance(ga_output_list , list),
                         "Output not a list.")
         self.assertTrue(isinstance(ga_output_list[0], float),

@@ -19,3 +19,9 @@ also, this file depend on pydicom package,
 if you want invoke this function, 
 please pip install pydicom first.  
  
+ 
+ prepare:
+ 
+ 1. use "pip install openpyxl" in terminal in order to use python to deal with excel.
+ 
+  
