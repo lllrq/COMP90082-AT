@@ -9,9 +9,9 @@ It was made for extracting and validating DICOM data in an easy "pythonic" way.
 ## 2. steps of using
 how to use this system to validate DICOM file?
 only three steps:
-step1: put dicom file path to DICOM_File_Path file;
-step2: put truth table path to truth_table_path file;
-step3: run auto_validate.py file to run this file.
+1. put dicom file path to DICOM_File_Path file;
+2. put truth table path to truth_table_path file;
+3. run auto_validate.py file to run this file.
  
 
 ## 3. prepare & dependency:
