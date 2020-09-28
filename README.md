@@ -1,27 +1,22 @@
 # COMP90082-AT
 
 
-how to use it?
-so easy, two steps:
-
-1: put dicom file path to DICOM_File_Path file;
-2: run the GantryAngle file;
-3: check the csv file in directory which is same with DICOM_File_Path file;
-
-AT-wombat is a pure python package for extracting params from DICOM files. 
-It was made for extracting and validating DICOM data in an easy "pythonic" way.  
+## 1. introduction:
+AT-wombat is a pure python package for extracting params from DICOM files and validating with given truth table. 
+It was made for extracting and validating DICOM data in an easy "pythonic" way. 
 
 
-Until current,
-I define one extractGantryAngle(file_path) function which is used to extract all Gantry Angle.
-
-also, this file depend on pydicom package,
-if you want invoke this function, 
-please pip install pydicom first.  
+## 2. steps of using
+how to use this system to validate DICOM file?
+only three steps:
+step1: put dicom file path to DICOM_File_Path file;
+step2: put truth table path to truth_table_path file;
+step3: run auto_validate.py file to run this file.
  
- 
- prepare:
- 
- 1. use "pip install openpyxl" in terminal in order to use python to deal with excel.
- 
-  
+
+## 3. prepare & dependency:
+this python file depend on some package,
+if you want to invoke this function, please use pip install to install following packages.
+1. pydicom: pip install pydicom, which is used to deal with DICOM file;
+2. csv: pip install csv, which is used to deal with csv file;
+3. openpyxl: pip install openpyxl, which is used to deal with excel file; 
