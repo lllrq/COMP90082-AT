@@ -1,6 +1,13 @@
+'''
+this file are used to deal with gantry angle parameter in DICOM,
+currently, including
+extract_gantry_angle,
+validate_gantry
+'''
+
 import pydicom
 """
-Method2 : extract_gantry_angle
+Method1 : extract_gantry_angle
 extract all gantry angle from file_path
 if you want use this function,
 please upload one file_path which is a dicom file
@@ -31,6 +38,7 @@ def extract_gantry_angle(file_path):
 
 
 '''
+Method1 : validate_gantry
 validate gantry angle with truth value;
 truthcase: the standard value for given case;
 datalist: the gantry angle extracted from given DICOM file.

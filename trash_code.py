@@ -1,6 +1,7 @@
 '''
 This file is convenient for our development.
-when we finish this development, we will delete it and don't care about it.
+when we finish this development, we will delete it,
+so,  don't care about it.
 '''
 
 

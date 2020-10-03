@@ -12,7 +12,11 @@ only three steps:
 1. put dicom file path to DICOM_File_Path file;
 2. put truth table path to truth_table_path file;
 3. run auto_validate.py file to run this file.
- 
+
+ps: 
+currently, we cannot catch all exceptions, 
+because these exceptions help us locate the problem,
+we will finish catching all exceptions before 31th,Oct,2021.
 
 ## 3. prepare & dependency:
 this python file depend on some package,

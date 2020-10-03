@@ -1,6 +1,17 @@
+'''
+this file are used to deal with SSD parameter in DICOM,
+currently, including
+extract_SSD,
+validate_SSD
+'''
+
 
 import pydicom
-# import auto_validate
+
+'''
+extract_SSD are used to extract SSD from gievn DICOM file path
+'''
+
 
 def extract_SSD(file_path):
     # step1: read one dicom file from given path and assigns value to the variable ds
@@ -9,11 +20,8 @@ def extract_SSD(file_path):
     except IOError:
         print("Error: The file was not found or failed to read")
     res = []
-    # print(ds)
+
     # step2. find all gantry angles from ds
-    # SSD:
-    # Source to Surface Distance
-    # Control Point Sequence
     try:
         for bs in ds.BeamSequence:
             cp = bs.ControlPointSequence[0]
@@ -32,8 +40,7 @@ truthcase: the standard value for given case;
 datalist: the SSD extracted from given DICOM file.
 '''
 
-# ["851.9", "894.2", "926.7", "895.7", "851.9", "1000.0"]
-# - mean non value？
+
 def validate_SSD(truthcase, extracted_values):
     truth_SSD = truthcase['SSD'].split(",")
 
@@ -87,7 +94,6 @@ def validate_SSD(truthcase, extracted_values):
 
 
 # file_path = "/Users/yaozhiyuan/myunimelb/semster3/software project/DICOM/LII DICOM samples/YellowLvlIII_7a.dcm"
-#
 # truthcase = auto_validate.read_truth_table(6)
 # extracted_values = extract_SSD(file_path)
 # res = validate_SSD(truthcase, extracted_values)

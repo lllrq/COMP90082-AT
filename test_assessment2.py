@@ -1,16 +1,18 @@
 #!/usr/bin/python3
 
-''' This script runs a set of unittests on the Python
-    code named auto_validate.py written for the subject
-    Software Project (COMP90082)
+'''
+This script runs a set of unittests on the Python
+code named auto_validate.py written for the subject
+Software Project (COMP90082)
 
-    Execute by entering your Anaconda environment and
-    typing from the command line:
+Execute by entering your Anaconda environment and
+typing from the command line:
 
-    python test_GA.py -v
+python test_GA.py -v
 
-    This will test a few functions and their outputs
-    for their correctness. '''
+This will test a few functions and their outputs
+for their correctness.
+'''
 
 import unittest
 import os
