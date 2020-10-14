@@ -8,7 +8,7 @@ def extract_prescription_dose(file_path):
     except IOError:
         print("Error: The file was not found or failed to read")
     res = []
-    print(ds)
+    # print(ds)
     # step2. find all prescription dose from ds
     # Number of Wedges
     # Beam Sequence
@@ -45,6 +45,7 @@ YellowLvlIII_1a.dcm: 1a ["2.0"]
 4a: ["2.0"]
 6a: ["50.0"]
 8b: ["50.0"]
+需要一份dicom structure.
 '''
 
 file_path = "/Users/yaozhiyuan/myunimelb/semster3/software project/DICOM/LIII DICOM samples/YellowLvlIII_8b.dcm"

@@ -49,6 +49,9 @@ YellowLvlIII_7a.dcm: [[-0.5, -31.8, -7.6], [-0.5, -31.8, -7.6], [-0.5, -31.8, -7
 YellowLvlIII_6a.dcm: [[-0.5, -31.8, -7.6], [-0.5, -31.8, -7.6], [-0.5, -31.8, -7.6], [-0.5, -31.8, -7.6], [-0.5, -31.8, -7.6]]
 6b: [[-0.5, -31.8, -7.6]]
 YellowLvlIII_8b.dcm: [[-0.5, -31.8, -7.6]]
+
+提不出来！！！
+
 '''
 
 file_path = "/Users/yaozhiyuan/myunimelb/semster3/software project/DICOM/LIII DICOM samples/YellowLvlIII_8b.dcm"

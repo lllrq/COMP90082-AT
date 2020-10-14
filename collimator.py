@@ -2,7 +2,6 @@
 import openpyxl
 import os
 import pydicom
-import auto_validate
 
 '''
 validate collimator
@@ -18,7 +17,6 @@ def extract_collimator(file_path):
     # print(ds)
     # step2: extract collimator from ds
     # BeamSequence, Control Point Sequence, BeamLimitingDeviceAngle
-    #
     i =0
     try:
         for bs in ds.BeamSequence:
@@ -59,26 +57,47 @@ if 90:
 def validate_collimator(truthcase, extracted_value):
     print("collimator:")
     print("     truth case in truth table is", end =": ")
-    truth_gantries = truthcase['collimator'].split(",")
-    truth_gantries = [int(x) for x in truth_gantries]
-    truth_gantries.sort()
-    print(truth_gantries)
-    extracted_value = [int(x) for x in extracted_value]
-    extracted_value.sort()
-    print("     extracted value is", end =": ")
+    truth_collimator = truthcase['collimator']
+    print(truth_collimator)
+    print("     extracted value is", end=": ")
     print(extracted_value)
-    if len(extracted_value) != len(truth_gantries):
-        return False
-    # print(truth_gantries)
-    # print(extracted_value)
-    for i in range(len(truth_gantries)):
-        if extracted_value[i] != truth_gantries[i]:
+
+    if truth_collimator =="0":
+        if len(extracted_value)== 1 and int(extracted_value[0]) == 0:
+            return True
+        else:
             return False
-    return True
+    elif truth_collimator =="90":
+        if len(extracted_value) == 1 and int(extracted_value[0]) == 90:
+            return True
+        else:
+            return False
+    elif truth_collimator =="not 0":
+        if len(extracted_value) ==0:
+            return False
+        if len(extracted_value) ==1 and int(extracted_value[0]) != 0:
+            return True
+        elif len(extracted_value) >1 :
+            for value in extracted_value:
+                if int(value)!=0:
+                    return True
+            else:
+                return False
+    elif truth_collimator =="-":
+        return True
 
 
 '''
-kinds in real value:  
+truth table: 0， 90, not 0, -
+
+0: len==1 and ==0;
+90: len==1 and ==90
+not 0: int()==0 return flse;
+-: return true?
+'''
+
+'''
+extracted value which are num array  
 YellowLvlIII_7a.dcm: ["0.0"]
 YellowLvlIII_7b.dcm: ["0.0", "355.0"]
 ACDSLevelII3_2a.dcm: ["0.0"]
@@ -91,10 +110,11 @@ ACDSLevelII3_14a.dcm ["0.0"]
 ACDSLevelII3_14b.dcm ["5.0"]
 '''
 
+
 file_path = "/Users/yaozhiyuan/myunimelb/semster3/software project/DICOM/LII DICOM samples/ACDSLevelII3_14b.dcm"
 res = extract_collimator(file_path)
-truthcase = auto_validate.read_truth_table(6)
-truth_collimator = truthcase['collimator']
-print(truth_collimator)
+# truthcase = auto_validate.read_truth_table(6)
+# truth_collimator = truthcase['collimator']
+# print(truth_collimator)
 
 print(res)
