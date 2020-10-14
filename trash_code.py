@@ -9,6 +9,37 @@ import openpyxl
 import os
 import pydicom
 
+
+
+def extract_prescription_dose(file_path):
+    # step1: read one dicom file from given path and assigns value to the variable ds
+    try:
+        ds = pydicom.dcmread(file_path, force=True)
+    except IOError:
+        print("Error: The file was not found or failed to read")
+    res = []
+    print(ds)
+    # step2. find all prescription dose from ds
+    # Number of Wedges
+    # Beam Sequence
+    # Dose Reference Sequence
+
+    try:
+        for drs in ds.DoseReferenceSequence:
+            if hasattr(drs, 'TargetPrescriptionDose'):
+                res.append(drs.TargetPrescriptionDose)
+    except AttributeError as err:
+        print("OS error: {0}".format(err))
+
+    # step3: Use 'set' to remove the same value
+    res = list(set(res))
+    return res
+
+file_path = "/Users/yaozhiyuan/myunimelb/semster3/software project/DICOM/LIII DICOM samples/YellowLvlIII_1a_Dose.dcm"
+res = extract_prescription_dose(file_path)
+print("-------------------------")
+print(res)
+
 '''
 
 def read_truth_table(case_number):
@@ -51,8 +82,7 @@ print("-----------------------------------------------------------")
 
 # Beam Dose Point SSD--    Referenced Dose Reference Sequence--
 # Control Point Sequence --   Beam Sequence
-
-
+'''
 def extract_gantry_angle(file_path):
     # step1: read one dicom file from given path and assigns value to the variable ds
     try:
@@ -73,7 +103,9 @@ def extract_gantry_angle(file_path):
     # step3: Use 'set' to remove the same value
     res = list(set(res))
     return res
+'''
 
+'''
 #  2.SSD? why this value is not same format with the truth value
 def extract_SSD(file_path):
     # step1: read one dicom file from given path and assigns value to the variable ds
@@ -110,9 +142,9 @@ print(res)
 res2 = extract_gantry_angle(file_path)
 print("------gantry------")
 print(res2)
+'''
 
-
-
+'''
 # 3. wedge
 def extract_wedge(file_path):
     # step1: read one dicom file from given path and assigns value to the variable ds
@@ -141,10 +173,10 @@ def extract_wedge(file_path):
 file_path = "/Users/yaozhiyuan/myunimelb/semster3/software project/DICOM/LII DICOM samples/YellowLvlIII_7a.dcm"
 # res = extract_wedge(file_path)
 # print(res)
+'''
 
 
-
-
+'''
 def extract_isocentre(file_path):
     # step1: read one dicom file from given path and assigns value to the variable ds
     try:
@@ -181,6 +213,8 @@ def extract_isocentre(file_path):
 file_path = "/Users/yaozhiyuan/myunimelb/semster3/software project/DICOM/LII DICOM samples/YellowLvlIII_7a.dcm"
 # res = extract_isocentre(file_path)
 # print(res)
+'''
+
 
 #
 #
@@ -219,6 +253,8 @@ file_path = "/Users/yaozhiyuan/myunimelb/semster3/software project/DICOM/LII DIC
 validate collimator 
 Beam Limiting Device Angle
 '''
+
+'''
 def extract_collimator(file_path):
     # step1: read one dicom file from given path and assigns value to the variable ds
     try:
@@ -250,4 +286,7 @@ def extract_collimator(file_path):
 
 # file_path = "/Users/yaozhiyuan/myunimelb/semster3/software project/DICOM/LII DICOM samples/YellowLvlIII_7a.dcm"
 # res = extract_collimator(file_path)
-# print(res)
+print(res)
+'''
+
+

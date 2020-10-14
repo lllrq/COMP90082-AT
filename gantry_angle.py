@@ -46,7 +46,7 @@ datalist: the gantry angle extracted from given DICOM file.
 
 def validate_gantry(truthcase, extracted_value):
     print("gantry angle:")
-    print("     truth case is", end =": ")
+    print("     truth case in truth table is", end =": ")
     truth_gantries = truthcase['gantry'].split(",")
     truth_gantries = [int(x) for x in truth_gantries]
     truth_gantries.sort()
