@@ -48,7 +48,7 @@ def validate_SSD(truthcase, extracted_values):
     print("     truth case is", end =": ")
     print(truth_SSD)
     #  no extracted value and truth SSD is -
-    if (len(extracted_values)==0 and len(truth_SSD)==1 and truth_SSD[0]=='-'):
+    if (len(extracted_values) ==0 and len(truth_SSD) ==1 and truth_SSD[0] =='-'):
         return True
     elif len(extracted_values)==0:
         return False

@@ -111,10 +111,10 @@ ACDSLevelII3_14b.dcm ["5.0"]
 '''
 
 
-file_path = "/Users/yaozhiyuan/myunimelb/semster3/software project/DICOM/LII DICOM samples/ACDSLevelII3_14b.dcm"
-res = extract_collimator(file_path)
-# truthcase = auto_validate.read_truth_table(6)
-# truth_collimator = truthcase['collimator']
-# print(truth_collimator)
-
-print(res)
+# file_path = "/Users/yaozhiyuan/myunimelb/semster3/software project/DICOM/LII DICOM samples/ACDSLevelII3_14b.dcm"
+# res = extract_collimator(file_path)
+# # truthcase = auto_validate.read_truth_table(6)
+# # truth_collimator = truthcase['collimator']
+# # print(truth_collimator)
+#
+# print(res)

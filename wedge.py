@@ -81,4 +81,4 @@ YellowLvlIII_1a_Dose.dcm: [] because no 'FileDataset' object has no attribute 'B
 
 file_path = "/Users/yaozhiyuan/myunimelb/semster3/software project/DICOM/LIII DICOM samples/YellowLvlIII_2a.dcm"
 res = extract_wedge(file_path)
-print(res)
+# print(res)

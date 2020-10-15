@@ -1,4 +1,8 @@
+'''
+this file will be deleted because:
+after talking with client,we found that these params cannot be extracted from DICOM file.
 
+'''
 
 import openpyxl
 import os
@@ -50,10 +54,10 @@ YellowLvlIII_6a.dcm: [[-0.5, -31.8, -7.6], [-0.5, -31.8, -7.6], [-0.5, -31.8, -7
 6b: [[-0.5, -31.8, -7.6]]
 YellowLvlIII_8b.dcm: [[-0.5, -31.8, -7.6]]
 
-提不出来！！！
+
 
 '''
 
 file_path = "/Users/yaozhiyuan/myunimelb/semster3/software project/DICOM/LIII DICOM samples/YellowLvlIII_8b.dcm"
 res = extract_isocentre(file_path)
-print(res)
+# print(res)
