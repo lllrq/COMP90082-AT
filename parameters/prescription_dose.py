@@ -10,10 +10,6 @@ def extract_prescription_dose(file_path):
     res = []
     # print(ds)
     # step2. find all prescription dose from ds
-    # Number of Wedges
-    # Beam Sequence
-    # Dose Reference Sequence
-
     try:
         for drs in ds.DoseReferenceSequence:
             if hasattr(drs, 'TargetPrescriptionDose'):
@@ -24,6 +20,22 @@ def extract_prescription_dose(file_path):
     # step3: Use 'set' to remove the same value
     res = list(set(res))
     return res
+
+
+def validate_prescription_dose(truthcase, extracted_value, writer, case_number):
+    # print(("wedge:"))
+    # print("     truth case in truth table is", end=": ")
+    writer.writerow(("********prescription_dose********", ""))
+    truth_prescription_dose = truthcase['prescription dose']
+    # print(truth_wedge)
+    writer.writerow(("truth case in case "+str(case_number), str(truth_prescription_dose)+","))
+    # print("     extracted value is", end=": ")
+    # print(extracted_value)
+    writer.writerow(("extracted value: ", extracted_value))
+    if extracted_value==str(int(truth_prescription_dose)):
+        return True
+    else:
+        return False
 
 '''
 truth case:
@@ -42,7 +54,7 @@ extracted value:
 YellowLvlIII_1a.dcm: 1a ["2.0"]
 2a: ["2.0"]
 3a: ["2.0"]
-4a: ["2.0"]
+4a: ["2.0"]`
 6a: ["50.0"]
 8b: ["50.0"]
 需要一份dicom structure.

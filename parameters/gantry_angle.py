@@ -17,7 +17,7 @@ def extract_gantry_angle(file_path):
     # step1: read one dicom_file file from given path and assigns value to the variable ds
     try:
         ds = pydicom.dcmread(file_path, force=True)
-        # print(ds)
+        print(ds)
     except IOError:
         print("Error: The file was not found or failed to read")
     res = []
