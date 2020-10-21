@@ -2,7 +2,7 @@
 import pydicom
 
 def extract_prescription_dose(file_path):
-    # step1: read one dicom file from given path and assigns value to the variable ds
+    # step1: read one dicom_file file from given path and assigns value to the variable ds
     try:
         ds = pydicom.dcmread(file_path, force=True)
     except IOError:

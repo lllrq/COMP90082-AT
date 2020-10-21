@@ -10,13 +10,13 @@ import pydicom
 
 
 def extract_isocentre(file_path):
-    # step1: read one dicom file from given path and assigns value to the variable ds
+    # step1: read one dicom_file file from given path and assigns value to the variable ds
     try:
         ds = pydicom.dcmread(file_path, force=True)
     except IOError:
         print("Error: The file was not found or failed to read")
     res = []
-    # print(ds)
+    print(ds)
     # step2. find all gantry angles from ds
     # Isocenter Position
     # Control Point Sequence
@@ -53,8 +53,7 @@ YellowLvlIII_7a.dcm: [[-0.5, -31.8, -7.6], [-0.5, -31.8, -7.6], [-0.5, -31.8, -7
 YellowLvlIII_6a.dcm: [[-0.5, -31.8, -7.6], [-0.5, -31.8, -7.6], [-0.5, -31.8, -7.6], [-0.5, -31.8, -7.6], [-0.5, -31.8, -7.6]]
 6b: [[-0.5, -31.8, -7.6]]
 YellowLvlIII_8b.dcm: [[-0.5, -31.8, -7.6]]
-
-
+不做！
 
 '''
 

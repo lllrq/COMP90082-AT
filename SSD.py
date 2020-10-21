@@ -14,7 +14,7 @@ extract_SSD are used to extract SSD from gievn DICOM file path
 
 
 def extract_SSD(file_path):
-    # step1: read one dicom file from given path and assigns value to the variable ds
+    # step1: read one dicom_file file from given path and assigns value to the variable ds
     try:
         ds = pydicom.dcmread(file_path, force=True)
     except IOError:
@@ -41,12 +41,14 @@ datalist: the SSD extracted from given DICOM file.
 '''
 
 
-def validate_SSD(truthcase, extracted_values):
+def validate_SSD(truthcase, extracted_values, writer,case_number):
     truth_SSD = truthcase['SSD'].split(",")
-
-    print("SSD:")
+    print(("------SSD: ", "------"))
+    print(("SSD:"))
     print("     truth case is", end =": ")
     print(truth_SSD)
+    writer.writerow(("********SSD******************", ""))
+    writer.writerow(("truth case in case "+str(case_number), truth_SSD))
     #  no extracted value and truth SSD is -
     if (len(extracted_values) ==0 and len(truth_SSD) ==1 and truth_SSD[0] =='-'):
         return True
@@ -56,7 +58,7 @@ def validate_SSD(truthcase, extracted_values):
 
     print("     extracted value is",  end =": ")
     print(extracted_values)
-
+    writer.writerow(("extracted value: ", extracted_values))
     normalize_extracted_values = []
     if len(extracted_values) == 1:
         if abs((extracted_values[0]) - 100) <= 1.5:

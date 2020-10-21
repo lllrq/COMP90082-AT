@@ -12,7 +12,7 @@ import pydicom
 
 
 def extract_prescription_dose(file_path):
-    # step1: read one dicom file from given path and assigns value to the variable ds
+    # step1: read one dicom_file file from given path and assigns value to the variable ds
     try:
         ds = pydicom.dcmread(file_path, force=True)
     except IOError:
@@ -84,7 +84,7 @@ print("-----------------------------------------------------------")
 # Control Point Sequence --   Beam Sequence
 '''
 def extract_gantry_angle(file_path):
-    # step1: read one dicom file from given path and assigns value to the variable ds
+    # step1: read one dicom_file file from given path and assigns value to the variable ds
     try:
         ds = pydicom.dcmread(file_path, force=True)
     except IOError:
@@ -108,7 +108,7 @@ def extract_gantry_angle(file_path):
 '''
 #  2.SSD? why this value is not same format with the truth value
 def extract_SSD(file_path):
-    # step1: read one dicom file from given path and assigns value to the variable ds
+    # step1: read one dicom_file file from given path and assigns value to the variable ds
     try:
         ds = pydicom.dcmread(file_path, force=True)
     except IOError:
@@ -147,7 +147,7 @@ print(res2)
 '''
 # 3. wedge
 def extract_wedge(file_path):
-    # step1: read one dicom file from given path and assigns value to the variable ds
+    # step1: read one dicom_file file from given path and assigns value to the variable ds
     try:
         ds = pydicom.dcmread(file_path, force=True)
     except IOError:
@@ -178,7 +178,7 @@ file_path = "/Users/yaozhiyuan/myunimelb/semster3/software project/DICOM/LII DIC
 
 '''
 def extract_isocentre(file_path):
-    # step1: read one dicom file from given path and assigns value to the variable ds
+    # step1: read one dicom_file file from given path and assigns value to the variable ds
     try:
         ds = pydicom.dcmread(file_path, force=True)
     except IOError:
@@ -219,7 +219,7 @@ file_path = "/Users/yaozhiyuan/myunimelb/semster3/software project/DICOM/LII DIC
 #
 #
 # def extract_isocentre(file_path):
-#     # step1: read one dicom file from given path and assigns value to the variable ds
+#     # step1: read one dicom_file file from given path and assigns value to the variable ds
 #     try:
 #         ds = pydicom.dcmread(file_path, force=True)
 #     except IOError:
@@ -256,7 +256,7 @@ Beam Limiting Device Angle
 
 '''
 def extract_collimator(file_path):
-    # step1: read one dicom file from given path and assigns value to the variable ds
+    # step1: read one dicom_file file from given path and assigns value to the variable ds
     try:
         ds = pydicom.dcmread(file_path, force=True)
     except IOError:

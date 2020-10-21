@@ -8,7 +8,7 @@ validate collimator
 Beam Limiting Device Angle
 '''
 def extract_collimator(file_path):
-    # step1: read one dicom file from given path and assigns value to the variable ds
+    # step1: read one dicom_file file from given path and assigns value to the variable ds
     try:
         ds = pydicom.dcmread(file_path, force=True)
     except IOError:
@@ -54,13 +54,16 @@ if 90:
 ... ...
 '''
 
-def validate_collimator(truthcase, extracted_value):
-    print("collimator:")
+def validate_collimator(truthcase, extracted_value, writer,case_number):
+    print(("------collimator---------"," "))
+    writer.writerow(("********collimator***************", ""))
     print("     truth case in truth table is", end =": ")
     truth_collimator = truthcase['collimator']
     print(truth_collimator)
+    writer.writerow(("truth case is in case "+ str(case_number), truth_collimator))
     print("     extracted value is", end=": ")
     print(extracted_value)
+    writer.writerow(("extracted value is: ", extracted_value))
 
     if truth_collimator =="0":
         if len(extracted_value)== 1 and int(extracted_value[0]) == 0:

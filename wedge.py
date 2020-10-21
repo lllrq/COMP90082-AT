@@ -3,7 +3,7 @@ import pydicom
 
 # 3. wedge
 def extract_wedge(file_path):
-    # step1: read one dicom file from given path and assigns value to the variable ds
+    # step1: read one dicom_file file from given path and assigns value to the variable ds
     try:
         ds = pydicom.dcmread(file_path, force=True)
     except IOError:
@@ -24,14 +24,16 @@ def extract_wedge(file_path):
     res = list(set(res))
     return res
 
-def validate_wedge(truthcase, extracted_value):
-    print("wedge:")
+def validate_wedge(truthcase, extracted_value, writer, case_number):
+    print(("wedge:"))
     print("     truth case in truth table is", end=": ")
+    writer.writerow(("********wedge***************", ""))
     truth_wedge = truthcase['wedge']
     print(truth_wedge)
+    writer.writerow(("truth case in case "+str(case_number), truth_wedge))
     print("     extracted value is", end=": ")
     print(extracted_value)
-
+    writer.writerow(("extracted value: ", extracted_value))
     if truth_wedge == "no wedge":
         # if there only one value, and equal 0, we think that no wedge?
         if len(extracted_value) == 1 and extracted_value[0]== 0:
