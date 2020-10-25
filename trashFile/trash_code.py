@@ -11,6 +11,62 @@ import pydicom
 
 
 
+'''
+Method3:  
+this function auto_validate is used to 
+auto validate file from DICOM file and print result!
+'''
+#
+# def auto_validate(case_number):
+#     # step1: read dicom_file file from given directory: DICOM_File_Path;
+#     file_path = os.path.split(os.path.realpath(__file__))[0] + "/DICOM_File_Path"
+#     file = open(file_path)
+#
+#     for line in file:
+#         # step2: extract parameters from dicom_file;
+#         # it is extendable;
+#         print("-------------------------------------------------")
+#         print("-----------Detailed parameter values-------------")
+#         extracted_gantry = gantry_angle.extract_gantry_angle(line)
+#         extracted_SSD = SSD.extract_SSD(line)
+#         # todo: extract more parameters in the next weeks!
+#         extracted_wedge = wedge.extract_wedge(line)
+#         extracted_collimator = collimator.extract_collimator(line)
+#         # step3: validate with truth table;
+#         # todo: validate more parameters in the next weeks!
+#         truth_case = read_truth_table(case_number)
+#
+#         # sp: make sure csv file
+#         dst = line[0:int(line.find("."))] + ".csv"
+#         csvFile = open(dst, 'w', newline='')
+#         writer = csv.writer(csvFile)
+#         writer.writerow(("------------Detailed parameter values-------------"))
+#
+#         res_gantry = gantry_angle.validate_gantry(truth_case, extracted_gantry, writer)
+#         res_SSD = SSD.validate_SSD(truth_case, extracted_SSD, writer)
+#         res_wedge = wedge.validate_wedge(truth_case,extracted_wedge,writer)
+#         res_collimator = collimator.validate_collimator(truth_case, extracted_collimator,writer)
+#
+#         # result! to cvs!
+#         try:
+#             writer.writerow(("------", 'result', '-----'))
+#             writer.writerow(("result for gantry: ", str(res_gantry)))
+#             writer.writerow(("result for SSD: ", str(res_SSD)))
+#             writer.writerow(("result for wedge: ", str(res_wedge)))
+#             writer.writerow(("result for collimator: ", str(res_collimator)))
+#             writer.writerow(("final result: ", str(res_gantry and res_SSD and res_wedge and res_collimator)))
+#         finally:
+#             csvFile.close()
+#         print("--------------------Result------------------------")
+#         # print("result for gantry: "+ str(res_gantry))
+#         # print("result for SSD: " + str(res_SSD))
+#         # print("result for wedge: "+ str(res_wedge))
+#         # print("result for collimator: "+ str(res_collimator))
+#         # print("final result: "+ str(res_gantry and res_SSD and res_wedge and res_collimator))
+#     file.close()
+
+
+
 def extract_prescription_dose(file_path):
     # step1: read one dicom_file file from given path and assigns value to the variable ds
     try:
