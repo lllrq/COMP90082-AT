@@ -1,5 +1,20 @@
+'''
+this file are used to deal with prescription_dose parameter in DICOM,
+currently, including
+extract_prescription_dose,
+validate_prescription_dose
+'''
+
 
 import pydicom
+
+"""
+Method1 : extract_prescription_dose
+extract all prescription_dose from file_path
+if you want use this function,
+please upload one file_path which is a dicom_file file
+"""
+
 
 def extract_prescription_dose(file_path):
     # step1: read one dicom_file file from given path and assigns value to the variable ds
@@ -8,18 +23,25 @@ def extract_prescription_dose(file_path):
     except IOError:
         print("Error: The file was not found or failed to read")
     res = []
-    # print(ds)
+
     # step2. find all prescription dose from ds
     try:
         for drs in ds.DoseReferenceSequence:
             if hasattr(drs, 'TargetPrescriptionDose'):
                 res.append(drs.TargetPrescriptionDose)
     except AttributeError as err:
-        print("OS error: {0}".format(err))
+        print(("OS error: {0} in "+file_path).format(err))
 
     # step3: Use 'set' to remove the same value
     res = list(set(res))
     return res
+
+'''
+Method2 : validate_prescription_dose
+validate prescription_dose with truth value;
+truthcase: the standard value for given case;
+extracted_value: the prescription_dose extracted from given DICOM file.
+'''
 
 
 def validate_prescription_dose(truthcase, extracted_value, writer, case_number):
@@ -62,5 +84,5 @@ YellowLvlIII_1a.dcm: 1a ["2.0"]
 
 file_path = "/Users/yaozhiyuan/myunimelb/semster3/software project/DICOM/LIII DICOM samples/YellowLvlIII_8b.dcm"
 res = extract_prescription_dose(file_path)
-print("-------------------------")
-print(res)
+# print("-------------------------")
+# print(res)

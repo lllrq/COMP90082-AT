@@ -1,12 +1,17 @@
+'''
+this file are used to deal with collimator parameter in DICOM,
+currently, including
+extract_collimator,
+validate_collimator
+'''
 
-import openpyxl
-import os
 import pydicom
 
 '''
-validate collimator
-Beam Limiting Device Angle
+method: validate collimator
 '''
+
+
 def extract_collimator(file_path):
     # step1: read one dicom_file file from given path and assigns value to the variable ds
     try:
@@ -14,10 +19,8 @@ def extract_collimator(file_path):
     except IOError:
         print("Error: The file was not found or failed to read")
     res = []
-    # print(ds)
+
     # step2: extract collimator from ds
-    # BeamSequence, Control Point Sequence, BeamLimitingDeviceAngle
-    i =0
     try:
         for bs in ds.BeamSequence:
             if hasattr(bs, 'ControlPointSequence'):
@@ -25,7 +28,7 @@ def extract_collimator(file_path):
                     if hasattr(cps, 'BeamLimitingDeviceAngle'):
                         res.append(cps.BeamLimitingDeviceAngle)
     except AttributeError as err:
-        print("OS error: {0}".format(err))
+        print(("OS error: {0} in "+file_path).format(err))
 
     # step3: Use 'set' to remove the same value
     res = list(set(res))
@@ -33,36 +36,23 @@ def extract_collimator(file_path):
 
 
 '''
-Method1 : validate_gantry
-validate gantry angle with truth value;
+method: validate_collimator
+
+validate collimator with truth value;
 truthcase: the standard value for given case;
-datalist: the gantry angle extracted from given DICOM file.
+extracted_value: the gantry angle extracted from given DICOM file.
 '''
 
-'''
-truth case have 4 kinds values including: 0, 90, not 0, -,
-extracted case including: (0.0)  (5.0), (270),(355)
-firstly base on truth case:
-if 0:
-    length>0 fail, length==0 and int(0)==0;
-if not 0:
-    length>0 true, if length==0 and int(0)==0 false; else true
-if 90:
-    length=1 and int() ==90
--:
-    if length==0 and int(0)==0 true.
-... ...
-'''
 
 def validate_collimator(truthcase, extracted_value, writer,case_number):
-    print(("------collimator---------"," "))
+    # print(("------collimator---------"," "))
     writer.writerow(("********collimator***************", ""))
-    print("     truth case in truth table is", end =": ")
+    # print("     truth case in truth table is", end =": ")
     truth_collimator = truthcase['collimator']
-    print(truth_collimator)
+    # print(truth_collimator)
     writer.writerow(("truth case is in case "+ str(case_number), truth_collimator))
-    print("     extracted value is", end=": ")
-    print(extracted_value)
+    # print("     extracted value is", end=": ")
+    # print(extracted_value)
     writer.writerow(("extracted value is: ", extracted_value))
 
     if truth_collimator =="0":

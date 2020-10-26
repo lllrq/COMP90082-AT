@@ -9,6 +9,7 @@ validate_SSD
 import pydicom
 
 '''
+method: extract_SSD
 extract_SSD are used to extract SSD from gievn DICOM file path
 '''
 
@@ -21,32 +22,32 @@ def extract_SSD(file_path):
         print("Error: The file was not found or failed to read")
     res = []
 
-    # step2. find all gantry angles from ds
+    # step2. find all SSD from ds
     try:
         for bs in ds.BeamSequence:
             cp = bs.ControlPointSequence[0]
             if hasattr(cp, 'SourceToSurfaceDistance'):
                 res.append(cp.SourceToSurfaceDistance)
     except AttributeError as err:
-        print("OS error: {0}".format(err))
+        print(("OS error: {0} in "+file_path).format(err))
 
-    # step3: Use 'set' to remove the same value
-    # res = list(set(res))
+    # step3: return result
     return res
 
 '''
+method: validate_SSD
 validate SSD with truth value;
 truthcase: the standard value for given case;
-datalist: the SSD extracted from given DICOM file.
+extracted_values: the SSD extracted from given DICOM file.
 '''
 
 
 def validate_SSD(truthcase, extracted_values, writer,case_number):
     truth_SSD = truthcase['SSD'].split(",")
-    print(("------SSD: ", "------"))
-    print(("SSD:"))
-    print("     truth case is", end =": ")
-    print(truth_SSD)
+    # print(("------SSD: ", "------"))
+    # print(("SSD:"))
+    # print("     truth case is", end =": ")
+    # print(truth_SSD)
     writer.writerow(("********SSD******************", ""))
     writer.writerow(("truth case in case "+str(case_number), truth_SSD))
     #  no extracted value and truth SSD is -
@@ -56,8 +57,8 @@ def validate_SSD(truthcase, extracted_values, writer,case_number):
         return False
     extracted_values = [int(int(i)/10) for i in extracted_values]
 
-    print("     extracted value is",  end =": ")
-    print(extracted_values)
+    # print("     extracted value is",  end =": ")
+    # print(extracted_values)
     writer.writerow(("extracted value: ", extracted_values))
     normalize_extracted_values = []
     if len(extracted_values) == 1:

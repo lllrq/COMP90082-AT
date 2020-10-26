@@ -17,7 +17,7 @@ def extract_gantry_angle(file_path):
     # step1: read one dicom_file file from given path and assigns value to the variable ds
     try:
         ds = pydicom.dcmread(file_path, force=True)
-        print(ds)
+        # print(ds)
     except IOError:
         print("Error: The file was not found or failed to read")
     res = []
@@ -29,7 +29,7 @@ def extract_gantry_angle(file_path):
                 if hasattr(cp, 'GantryAngle'):
                     res.append(cp.GantryAngle)
     except AttributeError as err:
-        print("OS error: {0}".format(err))
+        print(("OS error: {0} in "+file_path).format(err))
 
     # step3: Use 'set' to remove the same value
     res = list(set(res))
@@ -39,27 +39,27 @@ def extract_gantry_angle(file_path):
 
 
 '''
-Method1 : validate_gantry
+Method2 : validate_gantry
 validate gantry angle with truth value;
 truthcase: the standard value for given case;
-datalist: the gantry angle extracted from given DICOM file.
+extracted_value: the gantry angle extracted from given DICOM file.
 '''
 
 def validate_gantry(truthcase, extracted_value, writer, case_number):
 
 
     writer.writerow(("********gantry angle*********", ""))
-    print(("gantry angle:"))
-    print("     truth case in truth table is", end =": ")
+    # print(("gantry angle:"))
+    # print("     truth case in truth table is", end =": ")
     truth_gantries = truthcase['gantry'].split(",")
     truth_gantries = [int(x) for x in truth_gantries]
     truth_gantries.sort()
-    print(truth_gantries)
+    # print(truth_gantries)
     writer.writerow(("truth case in case "+str(case_number), truth_gantries))
     extracted_value = [int(x) for x in extracted_value]
     extracted_value.sort()
-    print("     extracted value is", end =": ")
-    print(extracted_value)
+    # print("     extracted value is", end =": ")
+    # print(extracted_value)
     writer.writerow(("extracted value:", extracted_value))
     if len(extracted_value) != len(truth_gantries):
         return False

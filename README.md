@@ -2,21 +2,16 @@
 
 
 ## 1. introduction:
-AT-wombat is a pure python package for extracting params from DICOM files and validating with given truth table. 
-It was made for extracting and validating DICOM data in an easy "pythonic" way. 
+AT-wombat is a pure python package for extracting params from DICOM files and validating with given truth table.  
 
 
 ## 2. steps of using
 how to use this system to validate DICOM file?
 only three steps:
-1. put dicom file path to DICOM_File_Path file;
-2. put truth table path to truth_table_path file;
+1. put dicom file directory path to DICOM_File_Path file in 'Path' directory;
+2. modify truth table value in 'Path' directory if you want;
 3. run auto_validate.py file to run this file.
 
-ps: 
-currently, we cannot catch all exceptions, 
-because these exceptions help us locate the problem,
-we will finish catching all exceptions before 31th,Oct,2021.
 
 ## 3. prepare & dependency:
 this python file depend on some package,
@@ -25,5 +20,3 @@ if you want to invoke this function, please use pip install to install following
 2. csv: pip install csv, which is used to deal with csv file;
 3. openpyxl: pip install openpyxl, which is used to deal with excel file; 
 
-## 5. ps
-1. 
