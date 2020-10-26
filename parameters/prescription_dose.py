@@ -45,6 +45,8 @@ extracted_value: the prescription_dose extracted from given DICOM file.
 
 
 def validate_prescription_dose(truthcase, extracted_value, writer, case_number):
+
+    # step1: show prompt information to csv file
     # print(("wedge:"))
     # print("     truth case in truth table is", end=": ")
     writer.writerow(("********prescription_dose********", ""))
@@ -54,10 +56,15 @@ def validate_prescription_dose(truthcase, extracted_value, writer, case_number):
     # print("     extracted value is", end=": ")
     # print(extracted_value)
     writer.writerow(("extracted value: ", extracted_value))
+
+    # step2: the validated logic may be not true, you can modify that here about how to validating.
+
     if extracted_value==str(int(truth_prescription_dose)):
         return True
     else:
         return False
+
+
 
 '''
 truth case:
@@ -79,10 +86,10 @@ YellowLvlIII_1a.dcm: 1a ["2.0"]
 4a: ["2.0"]`
 6a: ["50.0"]
 8b: ["50.0"]
-需要一份dicom structure.
+dicom structure.
 '''
 
-file_path = "/Users/yaozhiyuan/myunimelb/semster3/software project/DICOM/LIII DICOM samples/YellowLvlIII_8b.dcm"
-res = extract_prescription_dose(file_path)
+# file_path = "/Users/yaozhiyuan/myunimelb/semster3/software project/DICOM/LIII DICOM samples/YellowLvlIII_8b.dcm"
+# res = extract_prescription_dose(file_path)
 # print("-------------------------")
 # print(res)

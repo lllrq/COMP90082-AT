@@ -45,6 +45,7 @@ extracted_value: the gantry angle extracted from given DICOM file.
 
 
 def validate_collimator(truthcase, extracted_value, writer,case_number):
+    # step1: show prompt information to csv file
     # print(("------collimator---------"," "))
     writer.writerow(("********collimator***************", ""))
     # print("     truth case in truth table is", end =": ")
@@ -55,17 +56,18 @@ def validate_collimator(truthcase, extracted_value, writer,case_number):
     # print(extracted_value)
     writer.writerow(("extracted value is: ", extracted_value))
 
-    if truth_collimator =="0":
-        if len(extracted_value)== 1 and int(extracted_value[0]) == 0:
+    # step2: validate
+    if truth_collimator == "0":
+        if len(extracted_value) == 1 and int(extracted_value[0]) == 0:
             return True
         else:
             return False
-    elif truth_collimator =="90":
+    elif truth_collimator == "90":
         if len(extracted_value) == 1 and int(extracted_value[0]) == 90:
             return True
         else:
             return False
-    elif truth_collimator =="not 0":
+    elif truth_collimator == "not 0":
         if len(extracted_value) ==0:
             return False
         if len(extracted_value) ==1 and int(extracted_value[0]) != 0:

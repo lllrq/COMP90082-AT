@@ -43,6 +43,8 @@ extracted_values: the SSD extracted from given DICOM file.
 
 
 def validate_SSD(truthcase, extracted_values, writer,case_number):
+
+    # step1: show prompt information to csv file
     truth_SSD = truthcase['SSD'].split(",")
     # print(("------SSD: ", "------"))
     # print(("SSD:"))
@@ -56,11 +58,10 @@ def validate_SSD(truthcase, extracted_values, writer,case_number):
     elif len(extracted_values)==0:
         return False
     extracted_values = [int(int(i)/10) for i in extracted_values]
-
-    # print("     extracted value is",  end =": ")
-    # print(extracted_values)
     writer.writerow(("extracted value: ", extracted_values))
     normalize_extracted_values = []
+
+    # step2: validate
     if len(extracted_values) == 1:
         if abs((extracted_values[0]) - 100) <= 1.5:
             normalize_extracted_values.append( '100')

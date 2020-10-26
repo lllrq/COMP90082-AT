@@ -47,7 +47,7 @@ extracted_value: the gantry angle extracted from given DICOM file.
 
 def validate_gantry(truthcase, extracted_value, writer, case_number):
 
-
+    # step1: show prompt information to csv file
     writer.writerow(("********gantry angle*********", ""))
     # print(("gantry angle:"))
     # print("     truth case in truth table is", end =": ")
@@ -61,10 +61,10 @@ def validate_gantry(truthcase, extracted_value, writer, case_number):
     # print("     extracted value is", end =": ")
     # print(extracted_value)
     writer.writerow(("extracted value:", extracted_value))
+
+    # step2: validate
     if len(extracted_value) != len(truth_gantries):
         return False
-    # print(truth_gantries)
-    # print(extracted_value)
     for i in range(len(truth_gantries)):
         if extracted_value[i] != truth_gantries[i]:
             return False

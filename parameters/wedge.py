@@ -23,7 +23,6 @@ def extract_wedge(file_path):
         print("Error: The file was not found or failed to read")
     res = []
 
-
     # step2. find all wedge from ds
     try:
         for bs in ds.BeamSequence:
@@ -47,6 +46,8 @@ extracted_value: the wedge extracted from given DICOM file.
 
 
 def validate_wedge(truthcase, extracted_value, writer, case_number):
+
+    # step1: show prompt information to csv file
     # print(("wedge:"))
     # print("     truth case in truth table is", end=": ")
     writer.writerow(("********wedge***************", ""))
@@ -56,6 +57,8 @@ def validate_wedge(truthcase, extracted_value, writer, case_number):
     # print("     extracted value is", end=": ")
     # print(extracted_value)
     writer.writerow(("extracted value: ", extracted_value))
+
+    #  step2: validate
     if truth_wedge == "no wedge":
         # if there only one value, and equal 0, we think that no wedge?
         if len(extracted_value) == 1 and extracted_value[0]== 0:
