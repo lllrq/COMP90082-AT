@@ -59,7 +59,7 @@ def validate_prescription_dose(truthcase, extracted_value, writer, case_number):
 
     # step2: the validated logic may be not true, you can modify that here about how to validating.
 
-    if extracted_value==str(int(truth_prescription_dose)):
+    if str(int(extracted_value[0]))==str(int(truth_prescription_dose)):
         return True
     else:
         return False
