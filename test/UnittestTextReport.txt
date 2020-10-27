@@ -1,0 +1,13 @@
+test_import (test_GantryAngle.TestFunctions)
+Test the import_csv function ... ok
+test_gantry_angle (test_GantryAngle.TestFunctions)
+Tests the function ... ok
+test_SSD (test_GantryAngle.TestFunctions) ... ok
+test_wedge (test_GantryAngle.TestFunctions) ... ok
+test_collimator (test_GantryAngle.TestFunctions) ... ok
+test_prescription_dose (test_GantryAngle.TestFunctions) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.025s
+
+OK

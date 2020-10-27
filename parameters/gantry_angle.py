@@ -6,6 +6,7 @@ validate_gantry
 '''
 
 import pydicom
+
 """
 Method1 : extract_gantry_angle
 extract all gantry angle from file_path
